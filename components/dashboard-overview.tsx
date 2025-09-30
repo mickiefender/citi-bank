@@ -60,9 +60,9 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
       : recentTransactions.filter((t) => (selectedTransactionFilter === "revenue" ? t.amount > 100 : t.amount < 100))
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Top Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Total Balance */}
         <Card className="lg:col-span-1">
           <CardHeader>
@@ -70,7 +70,7 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <div className="text-3xl font-bold">
+              <div className="text-2xl sm:text-3xl font-bold">
                 ${totalBalance.toLocaleString("en-US", { minimumFractionDigits: 2 })}
               </div>
               <p className="text-sm text-muted-foreground mt-1">All Accounts</p>
@@ -89,7 +89,7 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
                 <p className="text-xs opacity-75 mt-1">{currentAccount.accountNumber || "****0000"}</p>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xl font-bold">
+                <span className="text-lg sm:text-xl font-bold">
                   ${(currentAccount.limit || currentAccount.balance).toLocaleString()}
                 </span>
                 <Button
@@ -106,7 +106,7 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
             <div className="flex items-center justify-between text-sm">
               <Button variant="ghost" size="sm" className="gap-1" onClick={handlePreviousCard}>
                 <ChevronLeft className="h-4 w-4" />
-                Previous
+                <span className="hidden sm:inline">Previous</span>
               </Button>
               <div className="flex gap-1">
                 {ACCOUNTS.map((_, index) => (
@@ -117,7 +117,7 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
                 ))}
               </div>
               <Button variant="ghost" size="sm" className="gap-1" onClick={handleNextCard}>
-                Next
+                <span className="hidden sm:inline">Next</span>
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
@@ -128,17 +128,17 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-sm font-medium text-muted-foreground">Goals</CardTitle>
-            <span className="text-sm text-muted-foreground">May, 2023</span>
+            <span className="text-xs sm:text-sm text-muted-foreground">May, 2023</span>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="text-3xl font-bold">$20,000</div>
+            <div className="text-2xl sm:text-3xl font-bold">$20,000</div>
 
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm">
                 <span className="text-muted-foreground">Target Achieved</span>
                 <span className="font-medium">$12,500</span>
               </div>
-              <div className="flex items-center justify-between text-sm">
+              <div className="flex items-center justify-between text-xs sm:text-sm">
                 <span className="text-muted-foreground">This month Target</span>
                 <span className="font-medium">$20,000</span>
               </div>
@@ -146,7 +146,7 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
 
             <div className="relative pt-4">
               <div className="flex items-center justify-center">
-                <div className="relative h-32 w-32">
+                <div className="relative h-28 w-28 sm:h-32 sm:w-32">
                   <svg className="transform -rotate-90" viewBox="0 0 120 120">
                     <circle
                       cx="60"
@@ -171,12 +171,12 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-xs text-muted-foreground">$0</span>
-                    <span className="text-2xl font-bold">12K</span>
+                    <span className="text-xl sm:text-2xl font-bold">12K</span>
                     <span className="text-xs text-muted-foreground">$20k</span>
                   </div>
                 </div>
               </div>
-              <div className="text-center mt-2 text-sm text-muted-foreground">Target vs Achievement</div>
+              <div className="text-center mt-2 text-xs sm:text-sm text-muted-foreground">Target vs Achievement</div>
             </div>
           </CardContent>
         </Card>
@@ -186,40 +186,41 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-sm font-medium text-muted-foreground">Upcoming Bill</CardTitle>
             <Button variant="ghost" size="sm" className="text-xs" onClick={() => router.push("/dashboard/bills")}>
-              View All <ArrowRight className="h-3 w-3 ml-1" />
+              <span className="hidden sm:inline">View All</span>
+              <ArrowRight className="h-3 w-3 sm:ml-1" />
             </Button>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-start gap-3 p-3 rounded-lg border border-border">
-              <div className="text-center min-w-[48px]">
+              <div className="text-center min-w-[40px] sm:min-w-[48px]">
                 <div className="text-xs text-muted-foreground">May</div>
-                <div className="text-2xl font-bold">15</div>
+                <div className="text-xl sm:text-2xl font-bold">15</div>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-medium">Spotify</p>
-                <p className="text-sm font-semibold">Spotify - Family</p>
-                <p className="text-xs text-muted-foreground">Last Charge - 14 August, 2025</p>
+                <p className="font-medium text-sm sm:text-base">Apple music</p>
+                <p className="text-xs sm:text-sm font-semibold">Apple music - Family</p>
+                <p className="text-xs text-muted-foreground">Last Charge - 12 August, 2025</p>
               </div>
               <div className="text-right">
-                <p className="font-bold">$19</p>
+                <p className="font-bold text-sm sm:text-base">$37</p>
               </div>
             </div>
 
             <div className="flex items-start gap-3 p-3 rounded-lg border border-border">
-              <div className="text-center min-w-[48px]">
+              <div className="text-center min-w-[40px] sm:min-w-[48px]">
                 <div className="text-xs text-muted-foreground">Jun</div>
-                <div className="text-2xl font-bold">16</div>
+                <div className="text-xl sm:text-2xl font-bold">16</div>
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                  <div className="h-6 w-6 bg-destructive rounded" />
-                  <p className="font-medium">Adobe</p>
+                  <div className="h-5 w-5 sm:h-6 sm:w-6 bg-destructive rounded" />
+                  <p className="font-medium text-sm sm:text-base">Netflix</p>
                 </div>
-                <p className="text-sm font-semibold">Adobe - Yearly</p>
+                <p className="text-xs sm:text-sm font-semibold">Netflix - Yearly</p>
                 <p className="text-xs text-muted-foreground">Last Charge - 17 Jun, 2023</p>
               </div>
               <div className="text-right">
-                <p className="font-bold">$559</p>
+                <p className="font-bold text-sm sm:text-base">$153</p>
               </div>
             </div>
           </CardContent>
@@ -227,39 +228,43 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
       </div>
 
       {/* Middle Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Recent Transactions */}
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle>Recent Transaction</CardTitle>
+            <CardTitle className="text-base sm:text-lg">Recent Transaction</CardTitle>
             <Button
               variant="ghost"
               size="sm"
               className="text-xs"
               onClick={() => router.push("/dashboard/transactions")}
             >
-              View All <ArrowRight className="h-3 w-3 ml-1" />
+              <span className="hidden sm:inline">View All</span>
+              <ArrowRight className="h-3 w-3 sm:ml-1" />
             </Button>
           </CardHeader>
           <CardContent>
-            <div className="flex gap-2 mb-4 border-b border-border">
+            <div className="flex gap-2 mb-4 border-b border-border overflow-x-auto">
               <Button
                 variant="ghost"
-                className={`rounded-none ${selectedTransactionFilter === "all" ? "border-b-2 border-primary" : ""}`}
+                size="sm"
+                className={`rounded-none whitespace-nowrap ${selectedTransactionFilter === "all" ? "border-b-2 border-primary" : ""}`}
                 onClick={() => setSelectedTransactionFilter("all")}
               >
                 All
               </Button>
               <Button
                 variant="ghost"
-                className={`text-muted-foreground ${selectedTransactionFilter === "revenue" ? "border-b-2 border-primary" : ""}`}
+                size="sm"
+                className={`text-muted-foreground whitespace-nowrap ${selectedTransactionFilter === "revenue" ? "border-b-2 border-primary" : ""}`}
                 onClick={() => setSelectedTransactionFilter("revenue")}
               >
                 Revenue
               </Button>
               <Button
                 variant="ghost"
-                className={`text-muted-foreground ${selectedTransactionFilter === "expenses" ? "border-b-2 border-primary" : ""}`}
+                size="sm"
+                className={`text-muted-foreground whitespace-nowrap ${selectedTransactionFilter === "expenses" ? "border-b-2 border-primary" : ""}`}
                 onClick={() => setSelectedTransactionFilter("expenses")}
               >
                 Expenses
@@ -268,19 +273,19 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
 
             <div className="space-y-3">
               {filteredTransactions.map((transaction) => (
-                <div key={transaction.id} className="flex items-center justify-between py-2">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center text-xl">
+                <div key={transaction.id} className="flex items-center justify-between py-2 gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                    <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-muted flex items-center justify-center text-lg sm:text-xl flex-shrink-0">
                       {transaction.icon}
                     </div>
-                    <div>
-                      <p className="font-medium">{transaction.name}</p>
-                      <p className="text-sm text-muted-foreground">{transaction.category}</p>
+                    <div className="min-w-0">
+                      <p className="font-medium text-sm sm:text-base truncate">{transaction.name}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground truncate">{transaction.category}</p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-semibold">${transaction.amount.toFixed(2)}</p>
-                    <p className="text-xs text-muted-foreground">{transaction.date}</p>
+                  <div className="text-right flex-shrink-0">
+                    <p className="font-semibold text-sm sm:text-base">${transaction.amount.toFixed(2)}</p>
+                    <p className="text-xs text-muted-foreground hidden sm:block">{transaction.date}</p>
                   </div>
                 </div>
               ))}
@@ -291,7 +296,7 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
         {/* Statistics */}
         <Card>
           <CardHeader>
-            <CardTitle>Statistics</CardTitle>
+            <CardTitle className="text-base sm:text-lg">Statistics</CardTitle>
             <div className="flex items-center gap-2 mt-2">
               <Button variant="outline" size="sm" className="text-xs bg-transparent">
                 Weekly Comparison
@@ -299,14 +304,16 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center justify-end gap-4 mb-4 text-xs">
+            <div className="flex items-center justify-end gap-2 sm:gap-4 mb-4 text-xs">
               <div className="flex items-center gap-1">
                 <div className="h-2 w-2 rounded-full bg-primary" />
-                <span>This week</span>
+                <span className="hidden sm:inline">This week</span>
+                <span className="sm:hidden">This</span>
               </div>
               <div className="flex items-center gap-1">
                 <div className="h-2 w-2 rounded-full bg-muted" />
-                <span>Last week</span>
+                <span className="hidden sm:inline">Last week</span>
+                <span className="sm:hidden">Last</span>
               </div>
             </div>
 
@@ -321,13 +328,13 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
                   color: "hsl(var(--muted))",
                 },
               }}
-              className="h-[200px]"
+              className="h-[180px] sm:h-[200px]"
             >
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={weeklyData}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 12 }} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12 }} />
+                  <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 10 }} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10 }} />
                   <ChartTooltip content={<ChartTooltipContent />} />
                   <Bar dataKey="thisWeek" fill="var(--color-thisWeek)" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="lastWeek" fill="var(--color-lastWeek)" radius={[4, 4, 0, 0]} />
@@ -340,20 +347,20 @@ export function DashboardOverview({ user }: DashboardOverviewProps) {
 
       {/* Expenses Breakdown */}
       <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Expenses Breakdown</CardTitle>
-          <span className="text-sm text-muted-foreground">*Compare to last month</span>
+        <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <CardTitle className="text-base sm:text-lg">Expenses Breakdown</CardTitle>
+          <span className="text-xs sm:text-sm text-muted-foreground">*Compare to last month</span>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {expensesBreakdown.map((expense) => (
-              <div key={expense.name} className="flex items-start gap-3 p-4 rounded-lg border border-border">
-                <div className="h-10 w-10 rounded-lg bg-muted flex items-center justify-center">
-                  <span className="text-xl">🏠</span>
+              <div key={expense.name} className="flex flex-col gap-2 p-3 sm:p-4 rounded-lg border border-border">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-lg bg-muted flex items-center justify-center">
+                  <span className="text-lg sm:text-xl">🏠</span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm text-muted-foreground">{expense.name}</p>
-                  <p className="text-lg font-bold">${expense.amount.toFixed(2)}</p>
+                <div className="flex-1">
+                  <p className="text-xs sm:text-sm text-muted-foreground">{expense.name}</p>
+                  <p className="text-base sm:text-lg font-bold">${expense.amount.toFixed(2)}</p>
                   <div className="flex items-center gap-1 mt-1">
                     <span className="text-xs text-muted-foreground">{expense.percentage}%*</span>
                     {expense.trend === "up" ? (
