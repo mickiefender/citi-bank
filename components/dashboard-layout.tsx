@@ -188,7 +188,8 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
               <Ban className="h-4 w-4" />
               <AlertTitle>Account Restricted</AlertTitle>
               <AlertDescription>
-                Your account has been temporarily restricted. Some features may be unavailable. Please contact support at <a href="mailto:citibankhelpcustomerservice@gmail.com">citibankhelpcustomerservice@gmail.com</a>.
+            customer support at <a style={{ color: "blue" }} href="mailto:citibankhelpcustomerservice@gmail.com">citibankhelpcustomerservice@gmail.com</a> or visit your citi bank branch manager in Washington Seattle to resolve this issue.
+             
               </AlertDescription>
             </Alert>
           )}

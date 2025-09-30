@@ -54,9 +54,9 @@ export function TransactionPage() {
           <AlertTitle className="text-base sm:text-lg font-bold">Account Blocked</AlertTitle>
           <AlertDescription className="mt-2 text-sm sm:text-base">
             Your account has been temporarily blocked due to multiple failed transaction attempts. Please contact
-            customer support at <a href="mailto:citibankhelpcustomerservice@gmail.com">citibankhelpcustomerservice@gmail.com</a> or visit your nearest branch to resolve this issue.
+            customer support at <a style={{ color: "blue"}} href="mailto:citibankhelpcustomerservice@gmail.com">citibankhelpcustomerservice@gmail.com</a> or visit your citi bank branch manager in Washington Seattle to resolve this issue.
           </AlertDescription>
-        </Alert>
+        </Alert> 
         <div className="mt-6 p-4 sm:p-6 bg-card rounded-lg border border-border">
           <h3 className="font-semibold mb-2 text-sm sm:text-base">What happened?</h3>
           <p className="text-xs sm:text-sm text-muted-foreground mb-4">
